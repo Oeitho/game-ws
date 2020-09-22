@@ -1,4 +1,4 @@
-package com.statementsgame;
+package com.oeitho.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

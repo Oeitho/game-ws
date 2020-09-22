@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+    ws:
+        build:
+            context: .
+            dockerfile: src/main/docker/Dockerfile.native
+        ports:
+            - "8080:8080"
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - infinispan
+        entrypoint: /bin/sh -c "echo 'sleep for 6 seconds' && sleep 6s && ./application \"-Dquarkus.http.host=0.0.0.0\""
+    infinispan:
+        image: infinispan/server:12.0
+        networks:
+            - backend
+        environment:
+            USER: admin
+            PASS: admin
+networks:
+    frontend:
+        driver: bridge
+    backend:
+        driver: bridge
