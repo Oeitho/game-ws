@@ -3,7 +3,7 @@ services:
     ws:
         build:
             context: .
-            dockerfile: src/main/docker/Dockerfile.native
+            dockerfile: src/main/docker/Dockerfile.jvm
         ports:
             - "8080:8080"
         networks:
