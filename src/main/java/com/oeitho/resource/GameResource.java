@@ -28,7 +28,7 @@ public class GameResource {
     @POST
     public Response createGame(Map<String, Object> gameData) {
         try {
-            Integer gameId = gameService.createGame(gameData);
+            String gameId = gameService.createGame(gameData);
             return Response
                 .status(Response.Status.OK)
                 .header("gameId", gameId)
@@ -42,7 +42,7 @@ public class GameResource {
 
     @Path("/{gameId}")
     @GET
-    public Response getGame(@PathParam Integer gameId) {
+    public Response getGame(@PathParam String gameId) {
         try {
             Map<String, Object> game = gameService.getGame(gameId);
             return Response

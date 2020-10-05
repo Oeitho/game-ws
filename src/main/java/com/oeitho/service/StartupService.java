@@ -22,7 +22,7 @@ public class StartupService {
                                        + "</local-cache>"
                                    + "</cache-container></infinispan>";
 
-    public void onStart(@Observes StartupEvent event) {            
+    public void onStart(@Observes StartupEvent event) { 
         remoteCacheManager.administration().getOrCreateCache("GameCache", new XMLStringConfiguration(CACHE_XML));
     }
 
