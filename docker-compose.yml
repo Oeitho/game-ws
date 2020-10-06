@@ -1,9 +1,7 @@
 version: '3.8'
 services:
     ws:
-        build:
-            context: .
-            dockerfile: src/main/docker/Dockerfile.jvm
+        image: oeitho/game-ws:1.1.0
         ports:
             - "8080:8080"
         networks:
@@ -11,9 +9,9 @@ services:
             - backend
         depends_on:
             - infinispan
-        entrypoint: /bin/sh -c "echo 'sleep for 6 seconds' && sleep 6s && ./application \"-Dquarkus.http.host=0.0.0.0\""
+        entrypoint: /bin/sh -c "echo 'sleep for 9 seconds' && sleep 9s && ./application \"-Dquarkus.http.host=0.0.0.0\""
     infinispan:
-        image: infinispan/server:12.0
+        image: infinispan/server:11.0.3.Final
         networks:
             - backend
         environment:
